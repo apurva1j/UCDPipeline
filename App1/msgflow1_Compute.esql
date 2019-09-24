@@ -1,6 +1,7 @@
 
 CREATE COMPUTE MODULE msgflow1_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
+	
 	BEGIN
 		 CALL CopyMessageHeaders();
 		 CALL CopyEntireMessage();
