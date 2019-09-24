@@ -30,7 +30,7 @@ pipeline {
 		{
 		withAnt(installation: 'Ant 1.10.7', jdk: 'jdk-11.0.4') {
 		// some block
-		bat "${ant_build}"
+		bat "ant ${ant_build}"
 		}
 }
 		}		
