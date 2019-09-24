@@ -15,6 +15,7 @@ def startJetty() {
 	//filesHolder.setInitParameter('resourceBase', './public')
     server.handler = handler
     server.start()
+	
 }
 
 
