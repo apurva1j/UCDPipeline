@@ -18,6 +18,8 @@ def startJetty() {
 	
 }
 
+
+
 println "Starting Jetty, press Ctrl+C to stop."
 
 startJetty()
