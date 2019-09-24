@@ -2,7 +2,7 @@ pipeline {
     agent any 
  	environment
 	{
-	ant_build = "C:\\Apurva\\JenkinsWorkspace\\ant1\\build.xml "
+	ant_build = "C:\\Apurva\\JenkinsWorkspace\\ant1\\build.xml"
 	}
 	stages {
         stage('Git Checkout') { 
