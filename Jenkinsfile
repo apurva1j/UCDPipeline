@@ -11,6 +11,16 @@ pipeline {
                 bat "echo Test"
             }
         }
+	 stage('Sonarqube') {
+		environment {
+        scannerHome = tool 'SonarScannerLocal'
+		}
+		steps {
+        withSonarQubeEnv('SonarLocal') {
+            bat "${scannerHome}/bin/sonar-scanner"
+        }
+		}
+		}
 		
         stage('Deploy') { 
             steps {
