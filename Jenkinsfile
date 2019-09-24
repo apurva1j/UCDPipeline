@@ -1,9 +1,9 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
+        stage('Git Checkout') { 
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apurva1j/sample1.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/apurva1j/POC1.git']]])
             }
         }
         stage('Test') { 
@@ -11,19 +11,6 @@ pipeline {
                 bat "echo Test"
             }
         }
-		stage('Sonarqube') {
-		environment {
-        scannerHome = tool 'SonarScannerLocal'
-		}
-		steps {
-        withSonarQubeEnv('SonalLocal') {
-            bat "${scannerHome}/bin/sonar-scanner"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-		}
-		}
 		
         stage('Deploy') { 
             steps {
