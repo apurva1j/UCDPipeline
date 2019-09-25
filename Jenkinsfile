@@ -1,3 +1,4 @@
+@Library('Poc1SharedLib')_
 pipeline {
     agent any 
  	environment
@@ -50,7 +51,15 @@ pipeline {
                }
             }
         }
-        stage('Deploy') { 
+	stage('sharedLib') {
+	steps {
+    	HelloWorld('hellooooooooooooooooooooo world')
+   	 }
+
+	}	
+
+		
+	stage('Deploy') { 
             steps {
                 bat "echo Deploy"
             }
