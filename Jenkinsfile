@@ -41,7 +41,7 @@ pipeline {
                  def server = Artifactory.server 'frogArtifactory'
                  def uploadSpec = """{
                     "files": [{
-                       "pattern": "C:\Apurva\Bars\",
+                       "pattern": "C:/Apurva/Bars/",
                        "target": "SampleRepo"
                     }]
                  }"""
