@@ -16,6 +16,14 @@ pipeline {
                 bat "echo Test"
             }
         }
+		  stage('Test') {
+			   steps {
+		timeout(time: 2, unit: “HOURS”) {
+		input message: ‘Approve Deploy?’, ok: ‘Yes’
+		}
+
+			   }
+		  }
 	 stage('Sonarqube') {
 		environment {
         scannerHome = tool 'SonarScannerLocal'
