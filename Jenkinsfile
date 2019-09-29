@@ -16,7 +16,14 @@ pipeline {
                 bat "echo Test"
             }
         }
-		  stage('Wait') {
+
+        stage ('Invoke_pipeline1') {
+            steps {
+                build job: 'Pipeline1'
+            }
+        }		
+		
+		stage('Wait') {
 			   steps {
 		timeout(time: 2, unit: "HOURS") {
 		input message: 'Approve Deploy?', ok: 'Yes'
