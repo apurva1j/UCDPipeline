@@ -16,7 +16,7 @@ pipeline {
                 bat "echo Test"
             }
         }
-		  stage('Test') {
+		  stage('Wait') {
 			   steps {
 		timeout(time: 2, unit: "HOURS") {
 		input message: 'Approve Deploy?', ok: 'Yes'
