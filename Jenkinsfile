@@ -80,14 +80,16 @@ pipeline {
 			def downloadSpec = """{
 			"files": [
 			{
-				"pattern": "SampleRepo/",
-				"target": "C:/Apurva/ArtifactoryDl"
+				"pattern": "SampleRepo/*.bar",
+				"target": "C:/Apurva/ArtifactoryDl/"
 			}]
 			}"""
-	server.download(downloadSpec)
+	//server.download(downloadSpec)
+	server.download spec: downloadSpec
 	}
 	}
 	}
+	
 		
 	stage('Deploy') { 
             steps {
