@@ -73,7 +73,7 @@ pipeline {
 
 	}	
 
-	stage('sharedLib') {
+	stage('Artifactory download') {
 	steps {		
 	rtDownload (
     serverId: 'frogArtifactory',
