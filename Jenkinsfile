@@ -75,19 +75,18 @@ pipeline {
 
 	stage('Artifactory download') {
 	steps {		
-	rtDownload (
-    serverId: 'frogArtifactory',
-    spec: '''{
-          "files": [
-            {
-              "pattern": "SampleRepo/",
-              "target": "C:/Apurva/ArtifactoryDl/",
-            }
-          ]
-    }'''
-)
+	def downloadSpec = """{
+	 "files": [
+  	{
+	      "pattern": "SampleRepo/",
+      		"target": "C:/Apurva/ArtifactoryDl"
+    	}
+ 	]
+	}"""
+	server.download(downloadSpec)
 	}
 	}
+		
 	stage('Deploy') { 
             steps {
                 bat "echo Deploy"
