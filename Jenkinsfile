@@ -73,7 +73,21 @@ pipeline {
 
 	}	
 
-		
+	stage('sharedLib') {
+	steps {		
+	rtDownload (
+    serverId: 'frogArtifactory',
+    spec: '''{
+          "files": [
+            {
+              "pattern": "SampleRepo/",
+              "target": "C:/Apurva/ArtifactoryDl/",
+            }
+          ]
+    }'''
+)
+	}
+	}
 	stage('Deploy') { 
             steps {
                 bat "echo Deploy"
