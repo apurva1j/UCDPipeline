@@ -90,32 +90,16 @@ pipeline {
 	}
 	}
 	
-	stage('UCD Create Component') {
-	steps {			
+    stage('UCD deploy')
+    {
+	steps{
 	step([$class: 'UCDeployPublisher',
-        siteName: 'UcdServer',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'Jenkins',
-            createComponent: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
-                componentTemplate: '',
-                componentApplication: 'Jenkins'
-            ],
-            delivery: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-                pushVersion: '${BUILD_NUMBER}',
-                baseDir: 'C:/Apurva/ArtifactoryDl',
-                fileIncludePatterns: '*.bar',
-                fileExcludePatterns: '',
-                pushProperties: 'jenkins.server=Local\njenkins.reviewed=false',
-                pushDescription: 'Pushed from Jenkins'
-            ]
-        ]
-    ])
+	component: [componentName: 'IIBComp', componentTag: '',
+	delivery: [$class: 'Push', baseDir: 'C:\\Apurva\\ArtifactoryDl', fileExcludePatterns: '', fileIncludePatterns: '*.bar', pushDescription: '', pushIncremental: false, pushProperties: '', pushVersion: '${BUILD_NUMBER}']], 
+	deploy: [deployApp: 'IIBDeploy', deployDesc: 'Requested from Jenkins', deployEnv: 'IIBEnv', deployOnlyChanged: false, deployProc: 'IIBDeployAppProcess', deployReqProps: '', deployVersions: 'IIBComp:${BUILD_NUMBER}', skipWait: false], siteName: 'UcdServer'])
+	
 	}
-	}
-		
+}	
 		
 	stage('Deploy') { 
             steps {
