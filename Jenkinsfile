@@ -75,15 +75,17 @@ pipeline {
 
 	stage('Artifactory download') {
 	steps {		
-	def downloadSpec = """{
-	 "files": [
-  	{
-	      "pattern": "SampleRepo/",
-      		"target": "C:/Apurva/ArtifactoryDl"
-    	}
- 	]
-	}"""
+	script {
+			def server = Artifactory.server 'frogArtifactory'
+			def downloadSpec = """{
+			"files": [
+			{
+				"pattern": "SampleRepo/",
+				"target": "C:/Apurva/ArtifactoryDl"
+			}]
+			}"""
 	server.download(downloadSpec)
+	}
 	}
 	}
 		
