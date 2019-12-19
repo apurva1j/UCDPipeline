@@ -13,7 +13,7 @@ pipeline {
 			agent{label 'label3'}
 			steps{
 				script{
-				docker build -t "/home/apurva/tmp/poc/workspace/POCUCDPipeline"
+				docker.build("/home/apurva/tmp/poc/workspace/POCUCDPipeline")
 				}
 			}
 		}
