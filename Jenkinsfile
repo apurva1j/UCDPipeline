@@ -9,7 +9,12 @@ pipeline {
             }
         }
 
-
+		stage('Build docker image'){
+			agent{label 'lable3'}
+			steps{
+				docker.build("/home/apurva/tmp/poc/workspace/POCUCDPipeline")
+			}
+		}
 	
 
     }
